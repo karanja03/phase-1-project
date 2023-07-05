@@ -1,0 +1,93 @@
+body{
+    background-color: black;
+
+}
+
+
+#mainTitle{
+    text-align: center;
+  color: red;
+  
+    
+}
+#miniTitle{
+  text-align: center;
+  color: red;
+}
+
+#miniTaskBar{
+    text-align: center;
+    color: red;
+}
+#scroll-container{
+  /* background-color: red; */
+  overflow: auto;
+  white-space: nowrap;
+  padding: 10px;
+
+}
+#scroll-container img{
+  padding: 10px;
+  width: 400px;
+  height: 600px;
+
+
+}
+.pg{
+  color: white;
+  
+}
+h2{
+  color: white;
+  font-size: medium;
+}
+.card1Info{
+  text-align: center;
+  box-sizing: border-box;
+  background-color: red;
+  /* border: solid 400px #afafaf; */
+  border-top:solid 100px black ;
+  padding-bottom: 50px;
+  border-left: solid 600px black;
+
+  border-right: solid 600px black;
+  
+}
+.imagecontainer{
+  height: 600px;
+  padding-top: 20px;
+}
+.mainTaskBar{
+  background-color: red;
+}
+.navList{
+  background-color: red;
+  padding-bottom: 30px;
+  padding-top: 20px;
+
+  
+}
+li{
+  display: inline;
+  padding: 20px;
+  padding-left: 200px;
+  
+
+}
+.newBottomNavBar{
+  background-color: white;
+}
+.theBottom{
+  text-align: center;
+  font-size: large;
+}
+label{
+  color: white;
+  display: block;
+}
+#subscribe-form{
+  padding-left: 100px;
+  line-height: 50px;
+  padding-top: 80px;
+  font-size: larger;
+}
