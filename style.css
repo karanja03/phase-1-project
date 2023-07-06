@@ -1,27 +1,38 @@
+*{
+  margin:0px;
+}
 body{
     background-color: black;
+    
 
 }
 
 
 #mainTitle{
     text-align: center;
-  color: red;
+  color: black;
+  background-color: red;
+  padding-bottom: 20px;
+  padding-top:20px ;
+  font-size: larger;
   
     
 }
 #miniTitle{
   text-align: center;
   color: red;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 #miniTaskBar{
     text-align: center;
     color: red;
+    margin-top: 20px;
 }
 #scroll-container{
   /* background-color: red; */
-  overflow: auto;
+  overflow:auto;
   white-space: nowrap;
   padding: 10px;
 
@@ -163,4 +174,79 @@ collapsible.active {
 }
 .paymentMethodheading{
   color: white;
+}
+#paymentForm{
+  text-align: center;
+  font-size: medium;
+  background-color: red;
+  color: black;
+  margin-top: 30px;
+  line-height: 40px;
+}
+.title{
+  font-size: larger;
+}
+input{
+  font-size:medium;
+}
+#paymentSubmit{
+  padding: 10px;
+  font-size: medium;
+  font-weight: 800;
+  margin-top:70px;
+  color: white;
+  background-color: black;
+  
+
+}
+.paymentNotify{
+  color: black;
+}
+label{
+  color: black;
+}
+#subscribe-form{
+  text-align: center;
+  font-size: medium;
+  background-color: red;
+  color: black;
+  font-weight: 700;
+  
+
+}
+#subscribeButton{
+  color: white;
+  background-color: black;
+  padding:10px ;
+}
+#subscribe-div{
+  margin-top: 30px;
+  padding-top: 20px;
+  background-color: red;
+  
+}
+.whySubscribe{
+  font-size: larger;
+  padding-top: 0px;
+  font-weight: 700;
+}
+.newBottomNavBar{
+  text-align: center;
+  font-size: large;
+  background-color: red;
+  color: black;
+  margin-top: 30px;
+  font-weight: 700;
+}
+
+#amountButton{
+  background-color: red;
+  color: black;
+  padding: 20px;
+  text-align: center;
+  margin-left: 700px;
+}
+.selectSeats{
+  padding: 10px;
+  margin-top: 20px;
 }

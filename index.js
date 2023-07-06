@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
   `;
 
   // Fetching movies from the server
-  fetch('http://localhost:3000/movies')
+  fetch('https://json-server-movies.onrender.com/movies')
     .then(response => response.json())
     .then(data => {
       // Creating movie cards
@@ -157,7 +157,7 @@ document.addEventListener('DOMContentLoaded', function () {
         totalCostElement.textContent = `Total Cost: ${totalCost}`;
         // const amountButton=document.createElement('button') ;
         //    amountButton.id='amountButton'
-            amountButton.textContent = `Pay Now: ${totalCost}`;
+            amountButton.textContent = `Pay Amount: ${totalCost}`;
             // document.body.appendChild(amountButton)
 
            
@@ -300,10 +300,8 @@ paymentForm.innerHTML=`
 
 <h3 class="paymentMethodheading">PAYMENT METHOD</h3>
 <label for="cnumber">CREDIT CARD NUMBER</label>
-<input type="number" placeholder="CREDIT CARD NUMBER" id="cnumber" required>
-
-
-<button type="submit">Submit</button>
+<input type="number" placeholder="CREDIT CARD NUMBER" id="cnumber" required ></br>
+<button id='paymentSubmit' type="submit">MAKE PAYMENT</button>
 <p class="paymentNotify">AN EMAIL WILL BE SENT TO THE ABOVE EMAIL ADDRESS<br> WITH THE BOOKED SEATS AND RECEIPTS.PLEASE PRINT THIS TO ACCESS THE CINEMA</p>
 </form>
 
@@ -326,7 +324,7 @@ paymentForm.addEventListener('submit', function(event){
 
 };
 
-  fetch('http://localhost:3000/paymentDetails', {
+  fetch('https://json-server-movies.onrender.com/paymentDetails', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -357,10 +355,15 @@ paymentForm.addEventListener('submit', function(event){
 
     //Subscribe Form
 
-    const newForm=document.createElement('form');
-    newForm.id="subscribe-form";
+    const newForm=document.createElement('div');
+    newForm.id="subscribe-div";
     newForm.innerHTML=`
-
+    <div>
+    <div class="whySubscribe">
+    <p>Subscribe below to get some special email news, promotions,<br> freebies and many more surprises. </p>
+    </div>
+    <div id="subscribe-form">
+    <form>
     <label for =fname>FIRST NAME</label>
     <input type="text" id="nfname" name="name" required>
     <label for =lname>LAST NAME</label>
@@ -368,14 +371,17 @@ paymentForm.addEventListener('submit', function(event){
     <label for =email>EMAIL ADDRESS</label>
     <input type="text" id="nemail" name="email" required>
     <label for =pno>CONTACT</label>
-    <input type="number" id="pnumber"  required>
-    <button type="submit">SUBSCRIBE TO OUR NEWSLETTER </button>
+    <input type="number" id="pnumber"  required></br>
+    <button id="subscribeButton" type="submit">SUBSCRIBE TO OUR NEWSLETTER </button>
+    </form>
+    </div>
+    </div>
     
     `;
     //delaying the appending of the form
     setTimeout(() => {
       document.body.appendChild(newForm);
-    }, 200);
+    }, 1000);
 
 
     newForm.addEventListener('submit', function(event){
@@ -396,7 +402,7 @@ paymentForm.addEventListener('submit', function(event){
     
     };
     
-      fetch('http://localhost:3000/subscribeForms', {
+      fetch('https://json-server-movies.onrender.com/subscribeForms', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -450,7 +456,7 @@ paymentForm.addEventListener('submit', function(event){
  //delaying the appending of the bottom navbar
  setTimeout(() => {
   document.body.appendChild(bottomNavBar);
-}, 200);
+}, 1000);
 
 
    
