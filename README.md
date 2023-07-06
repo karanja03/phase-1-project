@@ -92,7 +92,7 @@ The following have been used on this project:
 
 ![Screenshot from 2023-07-06 22-29-49](https://github.com/karanja03/phase-1-project/assets/134950124/fb2f18bc-083c-4c70-b6a9-5dbdbd22fb11)
 
-#SUBSCRIBE FORM
+# SUBSCRIBE FORM
 
 ![Screenshot from 2023-07-06 22-26-12](https://github.com/karanja03/phase-1-project/assets/134950124/53c8ad6c-a304-422a-9d1e-64903d80f4bf)
 
