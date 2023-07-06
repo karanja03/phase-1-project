@@ -67,30 +67,6 @@ The following have been used on this project:
 
 ## Screenshots of the WebPage Design
 
-- Homepage
--![Screenshot from 2023-07-06 22-24-37](https://github.com/karanja03/phase-1-project/assets/134950124/967ecc30-f4b8-48d9-8de4-9e1279c9cd82)
-
-
- 
-
-- SEat Container
-
-  
-
-- After Selecting Seats
-
-  
-
-  -Payment Form
-
- 
-
-- Subscribe Form
-
-  
-
--Alerts on submission
-
 
 ## Known Bugs
 
