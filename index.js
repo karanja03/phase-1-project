@@ -1,6 +1,7 @@
 
-
-
+const pricePerSeat=2000;
+const seatRows = ['A', 'B', 'C', 'D', 'E'];
+        const seatColumns = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
 document.addEventListener('DOMContentLoaded', function () {
   // Creating a scrollable images
@@ -57,7 +58,8 @@ document.addEventListener('DOMContentLoaded', function () {
         // Appending the movie card to the document body
         document.body.appendChild(cardInfo);
       }
-
+      //appending the payent form after the cards
+      document.body.appendChild(paymentForm);
       // Grabbing the select seat button
 
 
@@ -81,9 +83,8 @@ document.addEventListener('DOMContentLoaded', function () {
           newSeatsContainer.className = 'seatsContainerCollapsed';
           const closeButton=document.createElement('button');
           closeButton.className='closeButton'
-          // newSeatsContainer.innerHTML = `
-          //  <button class="closeButton">Close</button>`;//not seen button
-           
+          closeButton.textContent='CLOSE'
+          newSeatsContainer.appendChild(closeButton)
 
           //  newSeatsContainer.appendChild(closeButton)
           document.body.appendChild(newSeatsContainer);
@@ -108,18 +109,27 @@ document.addEventListener('DOMContentLoaded', function () {
               seatContent.style.maxHeight = seatContent.scrollHeight + 'px';
             }
           });
+          closeButton.addEventListener('click', function () {
+            newSeatsContainer.remove();
+          });
+    
     
           generateSeatMap(newSeatsContainer);
          
         });
       }
 
-
-
+      let selectedSeats = [];
+      const newSeatsContainer=document.getElementsByClassName('seatsContainerCollapsed');
+      const selectedSeatsMap = new Map();//for storing the selected seats
       function handleSeatClick(event) {
         const seat = event.target;
         const row = parseInt(seat.dataset.row);
         const col = parseInt(seat.dataset.col);
+        const container = seat.closest('.seatsContainerCollapsed');//closest ansestor element:identify the specific container the seat belongs to
+        let selectedSeats = selectedSeatsMap.get(container) || [];//getting the selected seats array associated with that specific container
+        // seat.classList.toggle('selected');//allows one to know whether the seat is already selected or not
+
         //removing the clicked seats from the array
         if (seat.classList.contains('selected')) {
           seat.classList.remove('selected');
@@ -129,13 +139,39 @@ document.addEventListener('DOMContentLoaded', function () {
           seat.classList.add('selected');
           selectedSeats.push({ row, col });
         }
+        selectedSeatsMap.set(container, selectedSeats);//updates the selectedseatsMaps with the latest selected seats array
         updateSelectedSeats(newSeatsContainer);
+        updateTotalCost(selectedSeats)
+      
       }
+      const amountButton=document.createElement('button') ;
+      amountButton.id='amountButton'
+      document.body.appendChild(amountButton)
+      function updateTotalCost(selectedSeats) {
+         const totalSeatsElement = document.getElementById('totalSeats');
+        const totalCostElement = document.getElementById('totalCost');
+        const totalSeats = selectedSeats.length;
+        const totalCost = totalSeats * pricePerSeat;
+      
+        totalSeatsElement.textContent = `Total number of seats: ${totalSeats}`;
+        totalCostElement.textContent = `Total Cost: ${totalCost}`;
+        // const amountButton=document.createElement('button') ;
+        //    amountButton.id='amountButton'
+            amountButton.textContent = `Pay Now: ${totalCost}`;
+            // document.body.appendChild(amountButton)
+
+           
+
+            }
+            
 
 
 
-
+      
       function updateSelectedSeats(newSeatsContainer) {
+        [...newSeatsContainer].forEach(container => {
+          
+          const selectedSeats = selectedSeatsMap.get(container) || [];
         const selectedSeatsPlaceElement=document.createElement('p')
         selectedSeatsPlaceElement.className='selectedSeatsPlaceElement';
         
@@ -143,23 +179,29 @@ document.addEventListener('DOMContentLoaded', function () {
           selectedSeatsPlaceElement.remove();
         }
         if (selectedSeats.length === 0) {
-          selectedSeatsPlaceElement.textContent = 'No seats selected';//seat already booked
+          selectedSeatsPlaceElement.textContent = 'No seats selected';
         } else {
-          selectedSeatsPlaceElement.textContent = 'Selected Seats: ';
-          selectedSeats.forEach((seat, index) => {
-            const seatText = seatRows[seat.row] + seatColumns[seat.col];
-            selectedSeatsPlaceElement.textContent += seatText;
-            if (index < selectedSeats.length - 1) {
-              selectedSeatsPlaceElement.textContent += ', ';
-            }
-          });
-          newSeatsContainer.appendChild(selectedSeatsPlaceElement);
+          const selectedSeatsText = selectedSeats.map(seat => seatRows[seat.row] + seatColumns[seat.col]);
+    selectedSeatsPlaceElement.textContent = 'Selected Seats: ' + selectedSeatsText.join(', ');
+
+          
         }
+        // Check if the selectedSeatsPlaceElement is already appended to the container
+        const existingPlaceElement = container.querySelector('.selectedSeatsPlaceElement');
+    if (existingPlaceElement) {
+      existingPlaceElement.replaceWith(selectedSeatsPlaceElement);
+    } else {
+      container.appendChild(selectedSeatsPlaceElement);
+    }
+      })
+        
       }
+      
       
 
 
            // Function to generate the seat map
+           const closeButton=document.getElementsByClassName('closeButton')
       function generateSeatMap(newSeatsContainer) {
         // Check if the container element is correctly referenced
         const seatLayout = [
@@ -170,8 +212,7 @@ document.addEventListener('DOMContentLoaded', function () {
           [1, 1, 1, 1, 1, 1, 1, 1, 1]
         ];
 
-        const seatRows = ['A', 'B', 'C', 'D', 'E'];
-        const seatColumns = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
+        
         let selectedSeats = [];
 
         console.log(newSeatsContainer); // Check if the container element is correctly referenced
@@ -211,18 +252,95 @@ document.addEventListener('DOMContentLoaded', function () {
 
           seatMap.appendChild(rowElement);
         }
+        const makePaymentButton=document.createElement('button')
+        makePaymentButton.id=' makePaymentButton'
+        makePaymentButton.textContent='PROCEED TO PAYMENT';
+        
+        makePaymentButton.addEventListener('click', function(){
+          console.log("clicked")
+          paymentForm.scrollIntoView({behavior:'smooth'})
+          })
+        
+        const totalSeatsElement = document.createElement('p');
+        totalSeatsElement.id = 'totalSeats';
+        const totalCostElement = document.createElement('p');
+        totalCostElement.id = 'totalCost';
 
-         newSeatsContainer = document.getElementsByClassName('seatsContainerCollapsed');
+
+         newSeatsContainer = document.querySelectorAll('.seatsContainerCollapsed');
         for (let i = 0; i < newSeatsContainer.length; i++) {
           const container = newSeatsContainer[i];
-          container.innerHTML = '';
+          // const existingContent = container.innerHTML;
+          // container.innerHTML = '';
           container.appendChild(screen);
           container.appendChild(seatMap);
-          container.appendChild(closeButton)
-        }
+          container.appendChild(totalSeatsElement)
+          container.appendChild(totalCostElement)
+          container.appendChild(makePaymentButton)
+        //  container.innerHTML += existingContent;
+         
+          }
+          
       }
     
   });
+})
+
+const  paymentForm=document.createElement('div');
+paymentForm.className='payment';
+paymentForm.innerHTML=`
+<form id="paymentForm">
+<h2 class ="title">Payment Details</h2>
+<label for="fname">FIRST NAME </label>
+<input type="text" placeholder="FIRST NAME" id="fname" required>
+<label for="lname">LAST NAME</label>
+<input type="text" placeholder="LAST NAME" id="lname" required>
+<label for="email">EMAIL ADDRESS</label>
+<input type="email" placeholder="EMAIL ADDRESS" id="email" required>
+
+<h3 class="paymentMethodheading">PAYMENT METHOD</h3>
+<label for="cnumber">CREDIT CARD NUMBER</label>
+<input type="number" placeholder="CREDIT CARD NUMBER" id="cnumber" required>
+
+
+<button type="submit">Submit</button>
+<p class="paymentNotify">AN EMAIL WILL BE SENT TO THE ABOVE EMAIL ADDRESS<br> WITH THE BOOKED SEATS AND RECEIPTS.PLEASE PRINT THIS TO ACCESS THE CINEMA</p>
+</form>
+
+`
+paymentForm.addEventListener('submit', function(event){
+  event.preventDefault();
+  const firstName = document.getElementById('fname').value;
+  const lastName = document.getElementById('lname').value;
+  const email = document.getElementById('email').value;
+  
+  const cardNumber = document.getElementById('cnumber').value;
+ 
+  const paymentDetails={
+    firstName,
+    lastName,
+    email,
+    cardNumber,
+    
+
+
+};
+
+  fetch('http://localhost:3000/paymentDetails', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(paymentDetails),
+  })
+    .then(response => response.json())
+    .then(() => {
+     alert("Payment Details Updated Successfully");
+      // Handle any further actions or UI updates after successful update
+    })
+    
+
+
 })
 
 
@@ -234,53 +352,105 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-//     //Subscribe Form
 
-//     const newForm=document.createElement('form');
-//     newForm.id="subscribe-form";
-//     newForm.innerHTML=`
 
-//     <label for =fname>FIRST NAME</label>
-//     <input type="text" id="fname" name="name" required>
-//     <label for =lname>LAST NAME</label>
-//     <input type="text" id="lname" name="name" required>
-//     <label for =email>EMAIL ADDRESS</label>
-//     <input type="text" id="email" name="email" required>
-//     <label for =pno>CONTACT</label>
-//     <input type="number" id="pnumber"  required>
-//     <br><button>SUBSCRIBE TO OUR NEWSLETTER </button>
+
+    //Subscribe Form
+
+    const newForm=document.createElement('form');
+    newForm.id="subscribe-form";
+    newForm.innerHTML=`
+
+    <label for =fname>FIRST NAME</label>
+    <input type="text" id="nfname" name="name" required>
+    <label for =lname>LAST NAME</label>
+    <input type="text" id="nlname" name="name" required>
+    <label for =email>EMAIL ADDRESS</label>
+    <input type="text" id="nemail" name="email" required>
+    <label for =pno>CONTACT</label>
+    <input type="number" id="pnumber"  required>
+    <button type="submit">SUBSCRIBE TO OUR NEWSLETTER </button>
     
-//     `;
-//     //delaying the appending of the form
-//     setTimeout(() => {
-//       document.body.appendChild(newForm);
-//     }, 200);
+    `;
+    //delaying the appending of the form
+    setTimeout(() => {
+      document.body.appendChild(newForm);
+    }, 200);
+
+
+    newForm.addEventListener('submit', function(event){
+      event.preventDefault();
+      const FirstName = document.getElementById('nfname').value;
+      const LastName = document.getElementById('nlname').value;
+      const Email = document.getElementById('nemail').value;
+      
+      const PhoneNumber = document.getElementById('pnumber').value;
+     
+      const paymentDetails={
+        FirstName,
+        LastName,
+        Email,
+        PhoneNumber,
+        
+    
+    
+    };
+    
+      fetch('http://localhost:3000/subscribeForms', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(paymentDetails),
+      })
+        .then(response => response.json())
+        .then(() => {
+         alert("THANK YOU FOR SUBSCRIBING");
+          // Handle any further actions or UI updates after successful update
+        })
+        
+    
+    
+    })
+    
 
 
 
-//     //bottom nav bar
-//     const bottomNavBar=document.createElement('nav')
-//     bottomNavBar.className='newBottomNavBar'
-//     bottomNavBar.innerHTML=`
-//     <div class=theBottom>
-//     <p>Popcorn Rendezvous Cinemas<br>is the leading destination for movies<br> and leisure in East Africa.</p>
-//     <p>MOBILE:0768657465/7937654783</p>
-//     <p>EMAIL ADDRESS:Popcorn@rendezvous@hotmail.com</p>
-//     </div>
-//     <div class=anotherBottom>
-//     <ul id=theBottomList>
-//     <li>24hr Security Systems</li>
-//     <li>100+ Parking Spaces </li>
-//     <li>Affordable Eating Outlets</li>
-//     <li>Comfortable Seats and Armrests</li>
-//     </ul>
-//     </div>
-//     `
-//  ;  
-//  //delaying the appending of the bottom navbar
-//  setTimeout(() => {
-//   document.body.appendChild(bottomNavBar);
-// }, 200);
+
+
+
+
+
+
+
+
+
+
+
+
+    //bottom nav bar
+    const bottomNavBar=document.createElement('nav')
+    bottomNavBar.className='newBottomNavBar'
+    bottomNavBar.innerHTML=`
+    <div class=theBottom>
+    <p>Popcorn Rendezvous Cinemas<br>is the leading destination for movies<br> and leisure in East Africa.</p>
+    <p>MOBILE:0768657465/7937654783</p>
+    <p>EMAIL ADDRESS:Popcorn@rendezvous@hotmail.com</p>
+    </div>
+    <div class=anotherBottom>
+    <ul id=theBottomList>
+    <li>24hr Security Systems</li>
+    <li>100+ Parking Spaces </li>
+    <li>Affordable Eating Outlets</li>
+    <li>Comfortable Seats and Armrests</li>
+    </ul>
+    </div>
+    `
+ ;  
+ //delaying the appending of the bottom navbar
+ setTimeout(() => {
+  document.body.appendChild(bottomNavBar);
+}, 200);
 
 
    

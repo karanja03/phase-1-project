@@ -155,3 +155,12 @@ collapsible.active {
   height: 500px; /* Set the desired height for the expanded container */
   /* Add any other CSS rules to style the expanded container */
 }
+.closeButton{
+  color: black;
+}
+.paymentNotify{
+  color: white;
+}
+.paymentMethodheading{
+  color: white;
+}
