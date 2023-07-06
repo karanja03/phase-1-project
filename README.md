@@ -66,23 +66,37 @@ The following have been used on this project:
 
 
 ## Screenshots of the WebPage Design
-![Screenshot from 2023-07-06 22-25-27](https://github.com/karanja03/phase-1-project/assets/134950124/15583c1c-4ea3-434f-93d1-dc6951bda571)
 
+#  HOME PAGE
+![Screenshot from 2023-07-06 22-24-37](https://github.com/karanja03/phase-1-project/assets/134950124/4fdb8827-aff9-4945-b965-59983a474b3a)
+
+#  EACH MOVIE ELEMENT
+![Screenshot from 2023-07-06 22-25-01](https://github.com/karanja03/phase-1-project/assets/134950124/24fe5bf7-f24a-43e5-9423-100eaf09c665)
+
+#  APPEARANCE OF SCREEN CONTAINER
+![Screenshot from 2023-07-06 22-25-13](https://github.com/karanja03/phase-1-project/assets/134950124/81fbb02e-ffc4-485b-9702-1c4c29683da4)
+
+#  SEATS CONTAINER SHOWING SELECTED SEATS
+![Screenshot from 2023-07-06 22-25-27](https://github.com/karanja03/phase-1-project/assets/134950124/454213c7-20c1-4559-84a9-eb8beb6141f3)
+
+# PAYMENT FORM
 ![Screenshot from 2023-07-06 22-29-49](https://github.com/karanja03/phase-1-project/assets/134950124/8ae670cd-2ef0-4ceb-a733-00445aae6c0a)
+
+#SUBSCRIBE FORM
 
 ![Screenshot from 2023-07-06 22-29-49](https://github.com/karanja03/phase-1-project/assets/134950124/fb2f18bc-083c-4c70-b6a9-5dbdbd22fb11)
 
-![Screenshot from 2023-07-06 22-24-37](https://github.com/karanja03/phase-1-project/assets/134950124/4fdb8827-aff9-4945-b965-59983a474b3a)
 
-![Screenshot from 2023-07-06 22-25-01](https://github.com/karanja03/phase-1-project/assets/134950124/24fe5bf7-f24a-43e5-9423-100eaf09c665)
 
-![Screenshot from 2023-07-06 22-25-13](https://github.com/karanja03/phase-1-project/assets/134950124/81fbb02e-ffc4-485b-9702-1c4c29683da4)
+
+
+
 
 ![Screenshot from 2023-07-06 22-26-12](https://github.com/karanja03/phase-1-project/assets/134950124/53c8ad6c-a304-422a-9d1e-64903d80f4bf)
 
 ![Screenshot from 2023-07-06 22-26-02](https://github.com/karanja03/phase-1-project/assets/134950124/5b76bbc8-b94e-4ab0-b486-4aebf1ba1063)
 
-![Screenshot from 2023-07-06 22-25-27](https://github.com/karanja03/phase-1-project/assets/134950124/454213c7-20c1-4559-84a9-eb8beb6141f3)
+
 
 
 
