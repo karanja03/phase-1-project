@@ -58,13 +58,12 @@ document.addEventListener('DOMContentLoaded', function () {
         // Appending the movie card to the document body
         document.body.appendChild(cardInfo);
       }
-      //appending the payent form after the cards
+      //appending the payment form after the cards
       document.body.appendChild(paymentForm);
+
+
       // Grabbing the select seat button
-
-
-
-      const selectSeatsButtons = document.querySelectorAll('.selectSeats');
+     const selectSeatsButtons = document.querySelectorAll('.selectSeats');
 
       // For each button, once clicked, it displays a container for seats
       for (let i = 0; i < selectSeatsButtons.length; i++) {
@@ -88,9 +87,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
           //  newSeatsContainer.appendChild(closeButton)
           document.body.appendChild(newSeatsContainer);
-          //newlyadded code
           
-          //to come back
+          //to make the screen container to appear
+          
           if (seatsContainer.classList.contains('seatsContainerExpanded')) {
             seatsContainer.classList.remove('seatsContainerExpanded');
             newSeatsContainer.classList.remove('seatsContainerExpanded');
@@ -100,7 +99,7 @@ document.addEventListener('DOMContentLoaded', function () {
           }
 
 
-          selectSeatsButtons[i].addEventListener('click', function () {
+          selectSeatsButtons[i].addEventListener('click', function () {//add event listener for select seat button
             newSeatsContainer.classList.toggle('active');
             const seatContent = document.querySelector('#seatMap');
             if (seatContent.style.maxHeight) {
@@ -118,17 +117,18 @@ document.addEventListener('DOMContentLoaded', function () {
          
         });
       }
-
+         //handling every seat clicked
       let selectedSeats = [];
       const newSeatsContainer=document.getElementsByClassName('seatsContainerCollapsed');
       const selectedSeatsMap = new Map();//for storing the selected seats
+
       function handleSeatClick(event) {
         const seat = event.target;
         const row = parseInt(seat.dataset.row);
         const col = parseInt(seat.dataset.col);
         const container = seat.closest('.seatsContainerCollapsed');//closest ansestor element:identify the specific container the seat belongs to
         let selectedSeats = selectedSeatsMap.get(container) || [];//getting the selected seats array associated with that specific container
-        // seat.classList.toggle('selected');//allows one to know whether the seat is already selected or not
+        
 
         //removing the clicked seats from the array
         if (seat.classList.contains('selected')) {
@@ -144,9 +144,11 @@ document.addEventListener('DOMContentLoaded', function () {
         updateTotalCost(selectedSeats)
       
       }
+      //button to display the amount to be paid
       const amountButton=document.createElement('button') ;
       amountButton.id='amountButton'
       document.body.appendChild(amountButton)
+      //function to add the value of the total cost on the seat container
       function updateTotalCost(selectedSeats) {
          const totalSeatsElement = document.getElementById('totalSeats');
         const totalCostElement = document.getElementById('totalCost');
@@ -155,19 +157,12 @@ document.addEventListener('DOMContentLoaded', function () {
       
         totalSeatsElement.textContent = `Total number of seats: ${totalSeats}`;
         totalCostElement.textContent = `Total Cost: ${totalCost}`;
-        // const amountButton=document.createElement('button') ;
-        //    amountButton.id='amountButton'
+        
             amountButton.textContent = `Pay Amount: ${totalCost}`;
-            // document.body.appendChild(amountButton)
-
-           
-
-            }
+             }
             
 
-
-
-      
+             //function to handle the selected seats
       function updateSelectedSeats(newSeatsContainer) {
         [...newSeatsContainer].forEach(container => {
           
@@ -181,7 +176,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (selectedSeats.length === 0) {
           selectedSeatsPlaceElement.textContent = 'No seats selected';
         } else {
-          const selectedSeatsText = selectedSeats.map(seat => seatRows[seat.row] + seatColumns[seat.col]);
+          const selectedSeatsText = selectedSeats.map(seat => seatRows[seat.row] + seatColumns[seat.col]);//displaying the value of seats selected
     selectedSeatsPlaceElement.textContent = 'Selected Seats: ' + selectedSeatsText.join(', ');
 
           
@@ -197,10 +192,7 @@ document.addEventListener('DOMContentLoaded', function () {
         
       }
       
-      
-
-
-           // Function to generate the seat map
+      // Function to generate the seat map
            const closeButton=document.getElementsByClassName('closeButton')
       function generateSeatMap(newSeatsContainer) {
         // Check if the container element is correctly referenced
@@ -252,10 +244,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
           seatMap.appendChild(rowElement);
         }
+
+        //button that redirects user to payment form
         const makePaymentButton=document.createElement('button')
         makePaymentButton.id=' makePaymentButton'
         makePaymentButton.textContent='PROCEED TO PAYMENT';
-        
+        //its eventlistener
         makePaymentButton.addEventListener('click', function(){
           console.log("clicked")
           paymentForm.scrollIntoView({behavior:'smooth'})
@@ -266,12 +260,10 @@ document.addEventListener('DOMContentLoaded', function () {
         const totalCostElement = document.createElement('p');
         totalCostElement.id = 'totalCost';
 
-
+          // appending every element we have created onto theseat container
          newSeatsContainer = document.querySelectorAll('.seatsContainerCollapsed');
         for (let i = 0; i < newSeatsContainer.length; i++) {
           const container = newSeatsContainer[i];
-          // const existingContent = container.innerHTML;
-          // container.innerHTML = '';
           container.appendChild(screen);
           container.appendChild(seatMap);
           container.appendChild(totalSeatsElement)
@@ -284,8 +276,9 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     
   });
-})
 
+
+//payment form
 const  paymentForm=document.createElement('div');
 paymentForm.className='payment';
 paymentForm.innerHTML=`
@@ -320,10 +313,8 @@ paymentForm.addEventListener('submit', function(event){
     email,
     cardNumber,
     
-
-
 };
-
+//post the details onto the server
   fetch('https://json-server-movies.onrender.com/paymentDetails', {
     method: 'POST',
     headers: {
@@ -343,17 +334,7 @@ paymentForm.addEventListener('submit', function(event){
 
 
 
-
-
-
-
-
-
-
-
-
-
-    //Subscribe Form
+//Subscribe Form
 
     const newForm=document.createElement('div');
     newForm.id="subscribe-div";
@@ -401,6 +382,7 @@ paymentForm.addEventListener('submit', function(event){
     
     
     };
+    //adds the info into the server
     
       fetch('https://json-server-movies.onrender.com/subscribeForms', {
         method: 'POST',
@@ -412,30 +394,15 @@ paymentForm.addEventListener('submit', function(event){
         .then(response => response.json())
         .then(() => {
          alert("THANK YOU FOR SUBSCRIBING");
-          // Handle any further actions or UI updates after successful update
+          
         })
         
     
     
     })
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     //bottom nav bar
-    const bottomNavBar=document.createElement('nav')
+const bottomNavBar=document.createElement('nav')
     bottomNavBar.className='newBottomNavBar'
     bottomNavBar.innerHTML=`
     <div class=theBottom>
@@ -457,6 +424,7 @@ paymentForm.addEventListener('submit', function(event){
  setTimeout(() => {
   document.body.appendChild(bottomNavBar);
 }, 1000);
+})
 
 
    
