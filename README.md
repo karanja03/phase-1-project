@@ -11,18 +11,23 @@ Popcorn Rendezvous is a a website that allows one to book movies of their choice
 Some of the Challenges I faced and will implement them better in the future:
  -Implementing the appearance of the seat container
  
+ 
  -Good positioning of the button that displays the amount to be payed
+ 
  
  -Having different seat data for each movie with different seats(currently using the same seat data)
  
+ 
  -fetching the seat data from the server:The current seatMap is dynamically created.
  
+ 
  -creating and adding more modes of payment.
+ 
  
  -adding buttons to link to youtube videos for trailers
  
 
-## Setup Requirements
+## Setup Requirements For This Particular project
 -VS code(or any IDE of your choice)
 - Git
 - Web-browser or your choice
@@ -36,7 +41,7 @@ Some of the Challenges I faced and will implement them better in the future:
   -Use the website accordingly.
   
   
-  ##How to use the project
+  ## How to use the project
   
   1)Open the website
   
@@ -49,6 +54,7 @@ Some of the Challenges I faced and will implement them better in the future:
   4)A button  containing the amount to  be paid should appear
   
   5)Once ready for payment and the Make Payment Button is clicked,it should redirect you to the payment form.
+  
   6)Once the payment is id done on the form an alert should appear indicating that the payment has been done successfully and update the information on the server
   
   7)Upon clicking the close button,the seat container should be closed.
