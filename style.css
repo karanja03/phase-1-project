@@ -57,7 +57,6 @@ h2{
   border-top:solid 100px black ;
   padding-bottom: 50px;
   border-left: solid 600px black;
-
   border-right: solid 600px black;
   
 }
@@ -125,8 +124,8 @@ label{
 .seat.selected {
   background-color: red;
 }
-
-#screen {
+/* allow the screen to appear with a background */
+#screen { 
   text-align: center;
   margin-bottom: 10px;
   margin-top: 15px;
@@ -137,6 +136,7 @@ label{
   padding-top: 5px;
   padding-bottom: 5px;
 }
+/* what happens when the seat container is collaped */
 .seatsContainerCollapsed.collapsed {
   display: block;
   opacity: 0;
@@ -160,8 +160,8 @@ collapsible.active {
 }
 .seatsContainerExpanded {
   display: block; /* Show the container */
-  height: 500px; /* Set the desired height for the expanded container */
-  /* Add any other CSS rules to style the expanded container */
+  height: 500px; /*desired height for the expanded container */
+  
 }
 .closeButton{
   color: black;
