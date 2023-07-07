@@ -15,6 +15,8 @@ document.addEventListener('DOMContentLoaded', function () {
     <img src='./images/woman.jpg' alt="THE WOMAN KING">
   `;
 
+
+
   // Fetching movies from the server
   fetch('https://json-server-movies.onrender.com/movies')
     .then(response => response.json())
@@ -63,6 +65,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
       // Grabbing the select seat button
+
+
+
      const selectSeatsButtons = document.querySelectorAll('.selectSeats');
 
       // For each button, once clicked, it displays a container for seats
@@ -122,6 +127,8 @@ document.addEventListener('DOMContentLoaded', function () {
       const newSeatsContainer=document.getElementsByClassName('seatsContainerCollapsed');
       const selectedSeatsMap = new Map();//for storing the selected seats
 
+
+
       function handleSeatClick(event) {
         const seat = event.target;
         const row = parseInt(seat.dataset.row);
@@ -161,7 +168,7 @@ document.addEventListener('DOMContentLoaded', function () {
             amountButton.textContent = `Pay Amount: ${totalCost}`;
              }
             
-
+ 
              //function to handle the selected seats
       function updateSelectedSeats(newSeatsContainer) {
         [...newSeatsContainer].forEach(container => {
@@ -191,6 +198,7 @@ document.addEventListener('DOMContentLoaded', function () {
       })
         
       }
+
       
       // Function to generate the seat map
            const closeButton=document.getElementsByClassName('closeButton')
@@ -324,12 +332,10 @@ paymentForm.addEventListener('submit', function(event){
   })
     .then(response => response.json())
     .then(() => {
-     alert("Payment Details Updated Successfully");
+     alert("PAYMENT MADE SUCCESSFULLY!!THANK YOU");
       // Handle any further actions or UI updates after successful update
     })
     
-
-
 })
 
 
@@ -394,16 +400,14 @@ paymentForm.addEventListener('submit', function(event){
       })
         .then(response => response.json())
         .then(() => {
-         alert("THANK YOU FOR SUBSCRIBING");
+         alert("THANK YOU FOR SUBSCRIBING TO OUR SITE");
           
         })
         
-    
-    
     })
 
     //bottom nav bar
-const bottomNavBar=document.createElement('nav')
+    const bottomNavBar=document.createElement('nav')
     bottomNavBar.className='newBottomNavBar'
     bottomNavBar.innerHTML=`
     <div class=theBottom>
@@ -414,7 +418,7 @@ const bottomNavBar=document.createElement('nav')
     <div class=anotherBottom>
     <ul id=theBottomList>
     <li>24hr Security Systems</li>
-    <li>100+ Parking Spaces </li>
+    <li>200+ Parking Spaces </li>
     <li>Affordable Eating Outlets</li>
     <li>Comfortable Seats and Armrests</li>
     </ul>
