@@ -28,10 +28,15 @@ Some of the Challenges I faced and will implement them better in the future:
  
 
 ## Setup Requirements For This Particular project
+
 -VS code(or any IDE of your choice)
+
 - Git
+- 
 - Web-browser or your choice
+- 
 - Github
+- 
 - server(https://json-server-movies.onrender.com)
 
   ##How to Install and Run the Project
@@ -117,12 +122,13 @@ The following have been used on this project:
 
 
 
-## Known Bugs
+## Known Bugs On The Project
 
 -The seat container appears at one position on the screen. It should scroll as one scrolls over the page.
 -The  top navigation bar elements are not activated and not clickable.
 
 ## For Support and any Contact Details
+
 For any suggestions or contributions or desire to use this code or any part of the code,
 Please Contact me via:
  Email: wambuik03@gmail.com
@@ -133,6 +139,7 @@ MIT License
 
 Copyright (c) 2023  Wambui Karanja
 
+
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
@@ -140,8 +147,10 @@ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 copies of the Software, and to permit persons to whom the Software is
 furnished to do so, subject to the following conditions:
 
+
 The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
+
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
