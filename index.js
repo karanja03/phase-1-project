@@ -383,6 +383,7 @@ paymentForm.addEventListener('submit', function(event){
     
     };
     //adds the info into the server
+    //the server for subscribe forms
     
       fetch('https://json-server-movies.onrender.com/subscribeForms', {
         method: 'POST',
